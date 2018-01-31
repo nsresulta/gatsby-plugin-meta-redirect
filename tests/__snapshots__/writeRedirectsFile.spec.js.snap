@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`writeRedirectsFile handles external redirects: true 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='http://example.com/'\\" />"`;
-
-exports[`writeRedirectsFile writes deep path redirects: true 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='/x/y/z/'\\" />"`;
-
-exports[`writeRedirectsFile writes redirects: true 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='/hello/'\\" />"`;
-
-exports[`writeRedirectsFile writes redirects: true 2`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='//'\\" />"`;

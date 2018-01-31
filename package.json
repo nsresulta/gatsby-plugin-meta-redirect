@@ -6,6 +6,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "clean": "git clean -xdf ./*.js",
     "build": "babel src -d .",
     "test": "jest",
     "prepublishOnly": "yarn build"

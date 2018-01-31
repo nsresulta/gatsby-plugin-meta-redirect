@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`onPostBuild handles external redirects 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='http://example.com/'\\" />"`;
+
+exports[`onPostBuild writes deep path redirects 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='/x/y/z/'\\" />"`;
+
+exports[`onPostBuild writes redirects 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='/hello/'\\" />"`;
+
+exports[`onPostBuild writes redirects 2`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='//'\\" />"`;
