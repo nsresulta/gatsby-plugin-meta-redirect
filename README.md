@@ -1,3 +1,6 @@
+[![Travis][build-badge]][build]
+[![npm package][npm-badge]][npm]
+
 # gatsby-plugin-meta-redirect
 
 Generates meta redirect html files for redirecting on any static file host.
@@ -49,3 +52,8 @@ and
 ```html
 <meta http-equiv="refresh" content="0; URL='/zn-CH/url/'" />
 ```
+
+[build-badge]: https://img.shields.io/travis/getchalk/gatsby-plugin-meta-redirect/master.png?style=flat-square
+[build]: https://travis-ci.org/getchalk/gatsby-plugin-meta-redirect
+[npm-badge]: https://img.shields.io/npm/v/gatsby-plugin-meta-redirect.png?style=flat-square
+[npm]: https://www.npmjs.org/package/gatsby-plugin-meta-redirect
