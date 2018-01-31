@@ -4,6 +4,7 @@
   "repository": "git@github.com:getchalk/gatsby-plugin-meta-redirect.git",
   "author": "Danny Wilson <dwilson@getchalk.com>",
   "license": "MIT",
+  "main": "index.js",
   "scripts": {
     "build": "babel src -d .",
     "test": "jest"

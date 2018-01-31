@@ -36,4 +36,5 @@ node_modules/
 .yarn-integrity
 
 /*.js
+!index.js
 yarn.lock
