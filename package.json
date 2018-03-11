@@ -5,6 +5,10 @@
   "author": "Danny Wilson <dwilson@getchalk.com>",
   "license": "MIT",
   "main": "index.js",
+  "keywords": [
+     "gatsby",
+     "gatsby-plugin"
+  ],
   "scripts": {
     "clean": "git clean -xdf ./*.js",
     "build": "babel src -d .",
