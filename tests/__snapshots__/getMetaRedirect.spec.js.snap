@@ -6,6 +6,8 @@ exports[`getMetaRedirect handles deep paths 1`] = `"<meta http-equiv=\\"refresh\
 
 exports[`getMetaRedirect handles offset wrapping forward slashes 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='/a/b/c/'\\" />"`;
 
+exports[`getMetaRedirect handles redirecting to root 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='/'\\" />"`;
+
 exports[`getMetaRedirect leaves full urls untouched 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='http://example.com'\\" />"`;
 
 exports[`getMetaRedirect leaves full urls untouched 2`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='http://example.com/'\\" />"`;

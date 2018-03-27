@@ -4,6 +4,6 @@ exports[`onPostBuild handles external redirects 1`] = `"<meta http-equiv=\\"refr
 
 exports[`onPostBuild writes deep path redirects 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='/x/y/z/'\\" />"`;
 
-exports[`onPostBuild writes redirects 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='/hello/'\\" />"`;
+exports[`onPostBuild writes redirects from root 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='/hello/'\\" />"`;
 
-exports[`onPostBuild writes redirects 2`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='//'\\" />"`;
+exports[`onPostBuild writes redirects to root 1`] = `"<meta http-equiv=\\"refresh\\" content=\\"0; URL='/'\\" />"`;

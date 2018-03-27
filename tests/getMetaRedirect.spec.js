@@ -30,4 +30,8 @@ describe('getMetaRedirect', () => {
     expect(getMetaRedirect('http://example.com/')).toMatchSnapshot();
     expect(getMetaRedirect('http://example.com/a/b/c')).toMatchSnapshot();
   });
+
+  it('handles redirecting to root', () => {
+    expect(getMetaRedirect('/')).toMatchSnapshot();
+  });
 });

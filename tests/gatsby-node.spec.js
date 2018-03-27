@@ -29,7 +29,7 @@ describe('onPostBuild', () => {
     await remove(tempFolderPath);
   });
 
-  it('writes redirects', async () => {
+  it('writes redirects from root', async () => {
     await assertRedirectFile(
       [
         {
@@ -41,7 +41,7 @@ describe('onPostBuild', () => {
     );
   });
 
-  it('writes redirects', async () => {
+  it('writes redirects to root', async () => {
     await assertRedirectFile(
       [
         {
