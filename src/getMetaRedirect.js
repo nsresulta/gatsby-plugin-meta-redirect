@@ -1,8 +1,17 @@
 module.exports = function getMetaRedirect(toPath) {
   let url = toPath.trim();
 
-  if (!toPath.includes('://')) {
-    url = `/${url}/`.replace(/\/\/+/g, '/');
+  const hasProtocol = url.includes('://');
+  if (!hasProtocol) {
+    const hasLeadingSlash = url.startsWith('/');
+    if (!hasLeadingSlash) {
+      url = `/${url}`;
+    }
+
+    const resemblesFile = url.includes('.');
+    if (!resemblesFile) {
+      url = `${url}/`.replace(/\/\/+/g, '/');
+    }
   }
 
   return `<meta http-equiv="refresh" content="0; URL='${url}'" />`;

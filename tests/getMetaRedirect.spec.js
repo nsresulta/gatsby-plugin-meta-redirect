@@ -34,4 +34,13 @@ describe('getMetaRedirect', () => {
   it('handles redirecting to root', () => {
     expect(getMetaRedirect('/')).toMatchSnapshot();
   });
+
+
+  it('handles redirecting to a file', () => {
+    expect(getMetaRedirect('/test.txt')).toMatchSnapshot();
+  });
+
+  it('handles redirecting to a file in a folder', () => {
+    expect(getMetaRedirect('a/b/test.txt')).toMatchSnapshot();
+  });
 });
