@@ -16,7 +16,6 @@ async function writeRedirectsFile(redirects, folder, pathPrefix) {
     );
 
     const fileExists = await exists(FILE_PATH);
-
     if (!fileExists) {
       try {
         await ensureDir(path.dirname(FILE_PATH));
@@ -25,7 +24,7 @@ async function writeRedirectsFile(redirects, folder, pathPrefix) {
       }
 
       const data = getMetaRedirect(toPath);
-      await writeFile(FILE_PATH, Buffer.from(data));
+      await writeFile(FILE_PATH, data);
     }
   }
 }
