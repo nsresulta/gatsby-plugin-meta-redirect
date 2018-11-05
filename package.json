@@ -4,7 +4,7 @@
   "repository": "git@github.com:getchalk/gatsby-plugin-meta-redirect.git",
   "author": "Danny Wilson <dwilson@getchalk.com>",
   "license": "MIT",
-  "main": "src/gatsby-node.js",
+  "main": "index.js",
   "engines": {
     "node": ">=8"
   },
