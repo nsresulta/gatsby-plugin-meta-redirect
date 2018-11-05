@@ -1,4 +1,4 @@
-const getMetaRedirect = require('../src/getMetaRedirect');
+const getMetaRedirect = require('../getMetaRedirect');
 
 describe('getMetaRedirect', () => {
   it('wraps path in forward slashes', () => {
@@ -34,7 +34,6 @@ describe('getMetaRedirect', () => {
   it('handles redirecting to root', () => {
     expect(getMetaRedirect('/')).toMatchSnapshot();
   });
-
 
   it('handles redirecting to a file', () => {
     expect(getMetaRedirect('/test.txt')).toMatchSnapshot();

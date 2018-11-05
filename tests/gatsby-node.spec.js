@@ -1,5 +1,5 @@
-const { exists, ensureDir, remove, readFile } = require('fs-extra');
-const { onPostBuild } = require('../src/gatsby-node');
+const { exists, remove, readFile } = require('fs-extra');
+const { onPostBuild } = require('../gatsby-node');
 
 describe('onPostBuild', () => {
   const tempFolderPath = './public';

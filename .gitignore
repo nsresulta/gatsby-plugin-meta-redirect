@@ -35,6 +35,5 @@ node_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-/*.js
-!index.js
+
 yarn.lock
