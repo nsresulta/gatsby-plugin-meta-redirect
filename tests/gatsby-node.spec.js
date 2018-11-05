@@ -1,8 +1,8 @@
-const { exists, ensureDir, remove, readFile } = require('fs-extra');
-const { onPostBuild } = require('../src/gatsby-node');
+const { exists, remove, readFile } = require("fs-extra");
+const { onPostBuild } = require("../src/gatsby-node");
 
-describe('onPostBuild', () => {
-  const tempFolderPath = './public';
+describe("onPostBuild", () => {
+  const tempFolderPath = "./public";
 
   const assertRedirectFile = async (redirects, expectedPath) => {
     await onPostBuild({
@@ -10,14 +10,14 @@ describe('onPostBuild', () => {
         getState: () => ({
           redirects,
           program: {
-            directory: './'
+            directory: "./"
           }
         })
       }
     });
 
     expect(await exists(expectedPath)).toBe(true);
-    expect(await readFile(expectedPath, 'utf-8')).toMatchSnapshot();
+    expect(await readFile(expectedPath, "utf-8")).toMatchSnapshot();
   };
 
   beforeEach(async () => {
@@ -29,48 +29,48 @@ describe('onPostBuild', () => {
     await remove(tempFolderPath);
   });
 
-  it('writes redirects from root', async () => {
+  it("writes redirects from root", async () => {
     await assertRedirectFile(
       [
         {
-          fromPath: '/',
-          toPath: '/hello'
+          fromPath: "/",
+          toPath: "/hello"
         }
       ],
       `${tempFolderPath}/index.html`
     );
   });
 
-  it('writes redirects to root', async () => {
+  it("writes redirects to root", async () => {
     await assertRedirectFile(
       [
         {
-          fromPath: '/hello',
-          toPath: '/'
+          fromPath: "/hello",
+          toPath: "/"
         }
       ],
       `${tempFolderPath}/hello/index.html`
     );
   });
 
-  it('writes deep path redirects', async () => {
+  it("writes deep path redirects", async () => {
     await assertRedirectFile(
       [
         {
-          fromPath: '/a/b/c/d',
-          toPath: '/x/y/z'
+          fromPath: "/a/b/c/d",
+          toPath: "/x/y/z"
         }
       ],
       `${tempFolderPath}/a/b/c/d/index.html`
     );
   });
 
-  it('handles external redirects', async () => {
+  it("handles external redirects", async () => {
     await assertRedirectFile(
       [
         {
-          fromPath: '/a/b',
-          toPath: 'http://example.com/'
+          fromPath: "/a/b",
+          toPath: "http://example.com/"
         }
       ],
       `${tempFolderPath}/a/b/index.html`
