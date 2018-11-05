@@ -1,5 +1,10 @@
 const path = require('path')
-const { promises: fs } = require('fs')
+const fs = require('fs')
+const { promisify } = require('util')
+
+const stat = promisify(fs.stat)
+const writeFile = promisify(fs.writeFile)
+
 const { mkdirp } = require('fs-extra')
 
 const getMetaRedirect = require('./getMetaRedirect')
@@ -12,21 +17,19 @@ async function writeRedirectsFile(redirects, folder, pathPrefix) {
 
     const FILE_PATH = path.join(folder, fromPath.replace(pathPrefix, ''), 'index.html')
 
-    const fileExists = await fs
-      .stat(FILE_PATH)
+    const fileExists = await stat(FILE_PATH)
       .then(stat => stat.isFile())
       .catch(() => false)
 
     if (!fileExists) {
-      const dirExists = await fs
-        .stat(path.dirname(FILE_PATH))
+      const dirExists = await stat(path.dirname(FILE_PATH))
         .then(stat => stat.isDirectory())
         .catch(() => false)
 
       if (!dirExists) await mkdirp(path.dirname(FILE_PATH))
 
       const data = getMetaRedirect(toPath)
-      await fs.writeFile(FILE_PATH, Buffer.from(data))
+      await writeFile(FILE_PATH, Buffer.from(data))
     }
   }
 }
