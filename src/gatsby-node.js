@@ -1,7 +1,7 @@
-const path = require('path');
-const { exists, writeFile, ensureDir } = require('fs-extra');
+const path = require("path");
+const { promises: fs } = require("fs");
 
-const getMetaRedirect = require('./getMetaRedirect');
+const getMetaRedirect = require("./getMetaRedirect");
 
 async function writeRedirectsFile(redirects, folder, pathPrefix) {
   if (!redirects.length) return;
@@ -11,20 +11,20 @@ async function writeRedirectsFile(redirects, folder, pathPrefix) {
 
     const FILE_PATH = path.join(
       folder,
-      fromPath.replace(pathPrefix, ''),
-      'index.html'
+      fromPath.replace(pathPrefix, ""),
+      "index.html"
     );
 
-    const fileExists = await exists(FILE_PATH);
-    if (!fileExists) {
-      try {
-        await ensureDir(path.dirname(FILE_PATH));
-      } catch (err) {
-        // ignore if the directory already exists;
-      }
+    const fileExists = await fs.stat(FILE_PATH).then(stat => stat.isFile());
 
+    if (!fileExists) {
+      const dirExists = await fs
+        .stat(path.dirname(FILE_PATH))
+        .then(stat => stat.isDirectory());
+
+      if (!dirExists) await fs.mkdir(path.dirname(FILE_PATH));
       const data = getMetaRedirect(toPath);
-      await writeFile(FILE_PATH, data);
+      await fs.writeFile(FILE_PATH, Buffer.from(data));
     }
   }
 }
@@ -32,11 +32,11 @@ async function writeRedirectsFile(redirects, folder, pathPrefix) {
 exports.onPostBuild = ({ store }) => {
   const { redirects, program, config } = store.getState();
 
-  let pathPrefix = '';
+  let pathPrefix = "";
   if (program.prefixPaths) {
     pathPrefix = config.pathPrefix;
   }
 
-  const folder = path.join(program.directory, 'public');
+  const folder = path.join(program.directory, "public");
   return writeRedirectsFile(redirects, folder, pathPrefix);
 };
