@@ -1,4 +1,4 @@
-module.exports = function getMetaRedirect(toPath) {
+module.exports = function getMetaRedirect(toPath, disableTrailingSlash) {
   let url = toPath.trim();
 
   const hasProtocol = url.includes('://');
@@ -8,7 +8,7 @@ module.exports = function getMetaRedirect(toPath) {
       url = `/${url}`;
     }
 
-    const resemblesFile = url.includes('.');
+    const resemblesFile = url.includes('.') || disableTrailingSlash;
     if (!resemblesFile) {
       url = `${url}/`.replace(/\/\/+/g, '/');
     }
